@@ -4,7 +4,13 @@ class OrdersController < ApplicationController
   # GET /orders
   # GET /orders.json
   def index
-    @orders = Order.all
+   # @orders = Order.all
+    #@orders = Order.paginate(:page=>params[:page], :order=>'created_at desc', :per_page => 10)
+    @orders = Order.paginate(:page=>params[:page], :per_page => 10).order('created_at desc')
+    respond_to do |format|
+      format.html
+      format.json {render json: @orders}
+    end
   end
 
   # GET /orders/1
@@ -19,6 +25,7 @@ class OrdersController < ApplicationController
       redirect_to store_url, :notice => "购物车空"
       return
     end
+
     @order = Order.new
 
     respond_to do |format|
@@ -41,8 +48,9 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        format.html { redirect_to store_url, notice: '订单已生成' }
-        format.json { render :show, status: :created, location: @order }
+       # Notifier.order_received(@order).deliver
+        format.html { redirect_to store_url, notice: '订单已下' }
+        format.json { render json: @order, status: :created, location: @order }
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }

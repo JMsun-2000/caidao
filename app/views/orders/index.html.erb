@@ -1,12 +1,12 @@
-<h1>Listing orders</h1>
+<h1>订单信息管理</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Address</th>
+      <th>姓名</th>
+      <th>地址</th>
       <th>Email</th>
-      <th>Pay type</th>
+      <th>支付方式</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -18,9 +18,9 @@
         <td><%= order.address %></td>
         <td><%= order.email %></td>
         <td><%= order.pay_type %></td>
-        <td><%= link_to 'Show', order %></td>
-        <td><%= link_to 'Edit', edit_order_path(order) %></td>
-        <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to '显示', order %></td>
+        <td><%= link_to '编辑', edit_order_path(order) %></td>
+        <td><%= link_to '删除', order, method: :delete, data: { confirm: '确定删除?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +28,5 @@
 
 <br>
 
-<%= link_to 'New Order', new_order_path %>
+<%= link_to '创建新订单', new_order_path %>
+<p><%= will_paginate @orders, :previous_label => t("上一页"), :next_label => t("下一页") %></p>

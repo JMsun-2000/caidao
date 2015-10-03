@@ -10,4 +10,7 @@ class Order < ActiveRecord::Base
       line_items << item
     end
   end
+
+  validates :name, :address, :email, :pay_type, :presence => true
+  validates :pay_type, :inclusion => PAYMENT_TYPES
 end
