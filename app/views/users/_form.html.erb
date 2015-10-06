@@ -11,19 +11,24 @@
     </div>
   <% end %>
 
+    <fieldset>
+      <legend>填写用户信息</legend>
+
   <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.label :name, '用户名' %><br>
+    <%= f.text_field :name, :size => 40 %>
   </div>
   <div class="field">
-    <%= f.label :hashed_password %><br>
-    <%= f.text_field :hashed_password %>
+    <%= f.label :openpassword, '密码' %><br>
+    <%= f.password_field :openpassword, :size => 40 %>
   </div>
   <div class="field">
-    <%= f.label :salt %><br>
-    <%= f.text_field :salt %>
+    <%= f.label :openpassword_confirmation, '确认密码' %><br>
+    <%= f.password_field :openpassword_confirmation, :size => 40 %>
   </div>
   <div class="actions">
     <%= f.submit %>
   </div>
+
+    </fieldset>
 <% end %>
