@@ -27,6 +27,11 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @cart = current_cart
 
+    file_url = upload()
+    if file_url
+      @product.image_url = file_url
+    end
+
     respond_to do |format|
       if @product.save
         format.html { redirect_to @product, notice: 'Product was successfully created.' }
@@ -41,8 +46,15 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   # PATCH/PUT /products/1.json
   def update
+    file_url = upload()
+
     respond_to do |format|
       if @product.update(product_params)
+
+        if file_url
+          @product.image_url = file_url
+          @product.save
+        end
         format.html { redirect_to @product, notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
@@ -68,6 +80,17 @@ class ProductsController < ApplicationController
       format.atom
       format.json {render json: @product}
     end
+  end
+
+  def upload
+    if params[:product][:picture]
+      uploaded_io = params[:product][:picture]
+      filename = "#{@product.title}_#{uploaded_io.original_filename}"
+      File.open(Rails.root.join('public','images', 'uploads', filename), 'wb') do |file|
+        file.write(uploaded_io.read)
+      end
+    end
+    return filename
   end
 
   private
