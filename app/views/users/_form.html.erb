@@ -26,8 +26,12 @@
     <%= f.label :openpassword_confirmation, '确认密码' %><br>
     <%= f.password_field :openpassword_confirmation, :size => 40 %>
   </div>
+      <div class="field">
+        <%= f.label :priority_name, '管理权限' %>
+        <%= f.select :priority_name, User::ADMIN_NAMES,  :prompt => '权限' %>
+      </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :name => "submit_button_name"%>
   </div>
 
     </fieldset>

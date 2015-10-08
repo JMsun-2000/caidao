@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_filter :authorizeAdmin
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -32,7 +34,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to users_url, notice: '用户 #{@user.name} 创建成功' }
+        format.html { redirect_to users_url, notice: "用户 #{@user.name} 创建成功" }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :action => "new" }
@@ -46,7 +48,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
-        format.html { redirect_to users_url, notice: '#{user.name} 已更新.' }
+        format.html { redirect_to users_url, notice: "用户 #{@user.name} 信息已更新." }
         format.json { render :show, status: :ok, location: @user }
       else
         format.html { render :edit }
@@ -60,16 +62,23 @@ class UsersController < ApplicationController
   def destroy
    # @user.destroy
     @user = User.find(params[:id])
+    notice_info = "删除操作完成";
     begin
       @user.destroy
-      flash[:notice] = "用户 #{@user.name} 已被删除"
+      notice_info = "用户 #{@user.name} 已被删除"
     rescue Exception => e
-      flash[:notice] = e.message
+      notice_info = e.message
     end
 
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to users_url, notice: notice_info }
       format.json { head :no_content }
+    end
+  end
+
+  def authorizeAdmin
+    unless (session[:user_priority] == 1)
+      redirect_to login_url, :notice => "无权限访问"
     end
   end
 
@@ -81,6 +90,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :openpassword, :openpassword_confirmation, :hashed_password, :salt)
+      params.require(:user).permit(:name, :openpassword, :openpassword_confirmation, :hashed_password, :salt, :priority_name, :priority)
     end
 end

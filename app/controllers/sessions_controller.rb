@@ -8,7 +8,15 @@ class SessionsController < ApplicationController
     user = User.authenticate(params[:name], params[:password])
     if user
       session[:user_id] = user.id
-      redirect_to admin_url
+      session[:user_priority] = user.priority
+      case user.priority
+        when 1
+        redirect_to admin_url
+        when 2
+          redirect_to products_url
+        else
+          redirect_to store_url
+      end
     else
       redirect_to login_url, :alert => "未登录"
     end

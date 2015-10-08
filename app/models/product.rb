@@ -11,22 +11,6 @@ class Product < ActiveRecord::Base
                 :with => %r{\.(gif|jpg|png|jpeg)\z}i,
                 :message => '必须上传图片.'
                       }
-=begin
-  attr_accessor :picture_update_url
-  attr_accessor :image_url
-
-  def updateURL(image_url)
-     self.picture_update_url = image_url
-  end
-
-  def image_url=(image_url)
-    if (self.picture_update_url)
-      self.image_url = self.picture_update_url
-    else
-      self.image_url = image_url
-    end
-  end
-=end
 
   private
 

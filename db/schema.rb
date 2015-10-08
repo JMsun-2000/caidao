@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151003142638) do
+ActiveRecord::Schema.define(version: 20151007132337) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 20151003142638) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "priority",        default: 1
   end
 
 end

@@ -8,7 +8,8 @@ class ApplicationController < ActionController::Base
 
   def authorize
     if request.format == Mime::HTML
-      unless User.find_by_id(session[:user_id])
+      user = User.find_by_id(session[:user_id])
+      unless user
         redirect_to login_url, :notice => "请登录"
       end
     else
