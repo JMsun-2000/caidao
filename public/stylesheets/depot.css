@@ -185,3 +185,8 @@
 .depot_form div {
     margin: 0.5em 0;
 }
+
+#uploaded_image {
+    width:     100px;
+    height:    100px;
+}
