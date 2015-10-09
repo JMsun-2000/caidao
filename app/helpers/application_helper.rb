@@ -5,4 +5,8 @@ module ApplicationHelper
     end
     content_tag("div", attributes, &block)
   end
+
+  def number_to_rmb(number)
+    return "#{number_with_precision(number, :precision => 2)}元"
+  end
 end

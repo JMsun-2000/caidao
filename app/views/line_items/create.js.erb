@@ -1,6 +1,10 @@
 $("#notice").hide();
 
-$('#showhidecart').html("<%= escape_javascript(render(@cart)) %>");
+$("#showhidecart").html("<%= escape_javascript(
+                                hidden_div_if(@cart.line_items.empty?, :id => "cart") do
+                                render @cart
+                                end
+                ) %>");
 
 
 $('#current_item').css({'background-color':'#88ff88'}).animate({'background-color':'#114411'}, 1000);

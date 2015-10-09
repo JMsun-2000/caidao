@@ -27,7 +27,12 @@ class LineItemsController < ApplicationController
   def create
     @cart = current_cart
     product = Product.find(params[:product_id])
-    @line_item = @cart.add_product(product.id)
+    @line_item = @cart.add_product(product.id, params[:number_change].to_i)
+
+    if (@line_item.quantity < 1)
+      @cart.line_items.find(@line_item.id).delete
+      return
+    end
 
 
     respond_to do |format|
@@ -75,6 +80,6 @@ class LineItemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def line_item_params
-      params.require(:line_item).permit(:product_id, :cart_id)
+      params.require(:line_item).permit(:product_id, :cart_id, :number_change)
     end
 end

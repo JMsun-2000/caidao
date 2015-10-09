@@ -12,19 +12,19 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br>
+    <%= f.label '姓名' %>
     <%= f.text_field :name, :size => 40 %>
   </div>
   <div class="field">
-    <%= f.label :address %><br>
+    <%= f.label '收货地址' %>
     <%= f.text_area :address, :rows => 3, :cols => 40 %>
   </div>
   <div class="field">
-    <%= f.label :email %><br>
+    <%= f.label '电话' %>
     <%= f.text_field :email, :size => 40 %>
   </div>
   <div class="field">
-    <%= f.label :pay_type %><br>
+    <%= f.label '支付方式' %>
     <%= f.select :pay_type, Order::PAYMENT_TYPES, :prompt => '选择支付方式' %>
   </div>
   <div class="actions">
