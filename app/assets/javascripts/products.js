@@ -13,5 +13,6 @@ function readURL(evt){
             document.getElementById('uploaded_image').src = fr.result;
         }
         fr.readAsDataURL(files[0]);
+        document.getElementById('uploaded_image').style.display = 'inline';
     }
 }

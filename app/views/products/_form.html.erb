@@ -12,23 +12,28 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title %><br>
+    <%= f.label '产品' %><br>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :description %><br>
+    <%= f.label '详细信息' %><br>
     <%= f.text_area :description %>
   </div>
   <div class="field">
-    <%= f.label :picture %><br>
-    <% if @product.picture %>
-      <div><%= image_tag("uploads/#{@product.picture}", :id => 'uploaded_image') %> </div>
-    <% end %>
+    <%= f.label '图片' %><br>
+    <% if @product.picture
+         @visable = 'display:inline'
+       else
+         @visable = 'display:none'
+       end
+    %>
+
+      <%= image_tag("uploads/#{@product.picture}", :id => 'uploaded_image', :style => @visable) %><br>
       <%= f.file_field :picture, :id => 'upload_picture', :onchange => 'readURL(this)' %>
-    </div>
+  </div>
 
   <div class="field">
-    <%= f.label :price %><br>
+    <%= f.label '价格' %><br>
     <%= f.text_field :price %>
   </div>
   <div class="actions">
