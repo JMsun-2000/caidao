@@ -16,6 +16,29 @@
         border-bottom: 3px dotted #77d;
 }
 
+#store_list {
+    border-top: 3px dotted #77d;
+}
+
+#store_filter {
+}
+
+#store_filter ul{
+    list-style: none;
+    padding: 0px;
+}
+
+#store_filter li{
+    display: inline;
+    padding: 5px;
+}
+
+#store_filter .filter_button{
+    color: #ff0000;
+    background-color: #CCCCCC;
+    text-decoration: none;
+}
+
 #store .entry form, #store .entry form div {
     display: inline;
 }
