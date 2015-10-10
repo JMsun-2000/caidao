@@ -1,0 +1,18 @@
+module LocalizeHelper
+  DETAIL_WORD = "详细信息"
+  PRODUCT_WORD = "产品"
+  IMAGE_WORD = "图片"
+  PRICE_WORD = "价格"
+  UNIT_WORD = "单位"
+  ORIGIN_WORD = "产地"
+  UPDATE_WORD = "更新"
+  INVENTORY_WORD = "库存"
+  ORDER_WROD = "订单"
+  USER_WORD = "人员"
+  LOGIN_WORD = "登录"
+  LOGOUT_WORD = "登出"
+  PRODUCT_TYPE_WORD = "种类"
+  TITLE_WORD = "名称"
+  LIST_WORD = "列表"
+  COUNTER_WORD = "专柜"
+end

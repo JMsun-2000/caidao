@@ -37,7 +37,7 @@
 }
 
 #product_list .list_description {
-  width:        60%;
+  width:        20%;
 }
 
 #product_list .list_description dl {
@@ -51,7 +51,8 @@
 }
 
 #product_list .list_description dd {
-        margin: 0;
+    margin: 0;
+    font-size:    small;
 }
 
 #product_list .list_actions {

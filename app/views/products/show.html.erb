@@ -3,23 +3,43 @@
 <% end %>
 
 <p>
-  <strong>Title:</strong>
+  <strong><%=LocalizeHelper::TITLE_WORD %>:</strong>
   <%= @product.title %>
 </p>
 
 <p>
-  <strong>Description:</strong>
-  <%= @product.description %>
+  <strong><%=LocalizeHelper::PRODUCT_TYPE_WORD %>:</strong>
+  <%= @product.product_type %>
 </p>
 
 <p>
-  <strong>Image url:</strong>
+  <strong><%=LocalizeHelper::IMAGE_WORD %>:</strong>
     <div><%= image_tag("uploads/#{@product.image_url}", :id => 'uploaded_image')  %> </div>
 </p>
 
 <p>
-  <strong>Price:</strong>
-  <%= @product.price %>
+  <strong><%=LocalizeHelper::PRICE_WORD %>:</strong>
+  <%= number_to_rmb(@product.price) %>
+</p>
+
+<p>
+  <strong><%=LocalizeHelper::UNIT_WORD %>:</strong>
+  <%= @product.unit %>
+</p>
+
+<p>
+  <strong><%=LocalizeHelper::ORIGIN_WORD %>:</strong>
+  <%= @product.origin %>
+</p>
+
+<p>
+  <strong><%=LocalizeHelper::INVENTORY_WORD %>:</strong>
+  <%= @product.inventory %>
+</p>
+
+<p>
+  <strong><%=LocalizeHelper::DETAIL_WORD %>:</strong>
+  <%= @product.description %>
 </p>
 
 <%= link_to 'Edit', edit_product_path(@product) %> |

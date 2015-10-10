@@ -1,5 +1,5 @@
 <div id="product_list">
-    <h1>Listing products</h1>
+    <h1><%= "#{LocalizeHelper::PRODUCT_WORD}#{LocalizeHelper::LIST_WORD}" %></h1>
 
     <table>
       <% @products.each do |product| %>
@@ -12,8 +12,13 @@
         <td class="list_description">
           <dl>
             <dt><%= product.title%></dt>
-            <dd><%= truncate(strip_tags(product.description), :length => 80) %></dd>
+            <dd><%= product.origin %>&nbsp;<%= product.product_type %></dd>
+            <dd><%= "#{product.price}/#{product.unit}" %></dd>
+            <dd><%= "#{LocalizeHelper::INVENTORY_WORD}: #{product.inventory}" %></dd>
           </dl>
+        </td>
+        <td class="">
+          <%= truncate(strip_tags(product.description), :length => 80) %>
         </td>
 
         <td class="list_actions">

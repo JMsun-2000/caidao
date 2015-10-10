@@ -4,13 +4,19 @@ class Product < ActiveRecord::Base
   has_many :orders, :through => :line_items
   before_destroy :ensure_not_referenced_by_any_line_item
 
-  validates :title, :description, :image_url, :picture, :presence => true
+  PRODUCT_TYPES = ["蔬菜", "水果", "肉禽", "副食品", "粮油", "调料"]
+
+  validates :title, :description, :image_url, :picture, :unit, :origin, :inventory, :product_type, :presence => true
   validates :price, :numericality => {:greater_than_or_equal_to => 0.01}
+  validates :inventory, :numericality => {:greater_than_or_equal_to => 0}
   validates :title, :uniqueness => true
   validates :image_url, :format => {
                 :with => %r{\.(gif|jpg|png|jpeg)\z}i,
                 :message => '必须上传图片.'
                       }
+
+  validates :product_type, :inclusion => PRODUCT_TYPES
+
   def picture
     return self.image_url
   end

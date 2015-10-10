@@ -12,30 +12,47 @@
   <% end %>
 
   <div class="field">
-    <%= f.label '产品' %><br>
+    <%= f.label LocalizeHelper::TITLE_WORD %><br/>
     <%= f.text_field :title %>
   </div>
+    <div class="field">
+      <%= f.label LocalizeHelper::PRODUCT_TYPE_WORD %><br/>
+      <%= f.select :product_type, Product::PRODUCT_TYPES %>
+    </div>
   <div class="field">
-    <%= f.label '详细信息' %><br>
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label '图片' %><br>
+    <%= f.label LocalizeHelper::IMAGE_WORD %><br/>
     <% if @product.picture
          @visable = 'display:inline'
        else
          @visable = 'display:none'
        end
     %>
-
       <%= image_tag("uploads/#{@product.picture}", :id => 'uploaded_image', :style => @visable) %><br>
       <%= f.file_field :picture, :id => 'upload_picture', :onchange => 'readURL(this)' %>
   </div>
 
   <div class="field">
-    <%= f.label '价格' %><br>
+    <%= f.label LocalizeHelper::PRICE_WORD %><br>
     <%= f.text_field :price %>
   </div>
+    <div class="field">
+      <%= f.label LocalizeHelper::UNIT_WORD %><br>
+      <%= f.text_field :unit %>
+    </div>
+    <div class="field">
+      <%= f.label LocalizeHelper::ORIGIN_WORD %><br>
+      <%= f.text_field :origin %>
+    </div>
+
+    <div class="field">
+      <%= f.label LocalizeHelper::INVENTORY_WORD %><br>
+      <%= f.text_field :inventory %>
+    </div>
+
+    <div class="field">
+      <%= f.label  LocalizeHelper::DETAIL_WORD %><br/>
+      <%= f.text_area :description %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>
