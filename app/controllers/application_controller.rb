@@ -11,6 +11,10 @@ class ApplicationController < ActionController::Base
       user = User.find_by_id(session[:user_id])
       unless user
         redirect_to login_url, :notice => "请登录"
+      else
+        if user.priority == 0
+          redirect_to store_url
+        end
       end
     else
       authenticate_or_request_with_http_basic do |username, password|

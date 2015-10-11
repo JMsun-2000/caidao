@@ -77,7 +77,7 @@ class UsersController < ApplicationController
   end
 
   def authorizeAdmin
-    unless (session[:user_priority] == 1)
+    unless (session[:user_priority] == 5)
       redirect_to login_url, :notice => "无权限访问"
     end
   end

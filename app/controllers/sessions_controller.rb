@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       session[:user_priority] = user.priority
       case user.priority
-        when 1
+        when 5
         redirect_to admin_url
         when 2
           redirect_to products_url

@@ -23,20 +23,15 @@
           <% end %>
         </div>
 
-        <ul style="display: none">
-          <li><a href="http://www....">Home</a></li>
-          <li><a href="http://www..../faq">Questions</a></li>
-          <li><a href="http://www..../news">News</a></li>
-          <li><a href="http://www..../contact">Contact</a></li>
-        </ul>
-
         <% if session[:user_id] %>
+            <% if session[:user_priority] > 0 %>
             <ul>
               <li><%= link_to LocalizeHelper::ORDER_WROD,   orders_path   %></li>
               <li><%= link_to LocalizeHelper::PRODUCT_WORD, products_path %></li>
               <li><%= link_to LocalizeHelper::USER_WORD,    users_path    %></li>
             </ul>
-            <%= button_to LocalizeHelper::LOGOUT_WORD, logout_path, :method => :delete   %>
+            <% end %>
+            <%= button_to "#{User::ADMIN_NAMES[session[:user_priority]]}#{LocalizeHelper::LOGOUT_WORD}", logout_path, :method => :delete   %>
         <% end %>
 
       </div>

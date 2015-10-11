@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_filter :authorizeProduct
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
@@ -81,6 +82,12 @@ class ProductsController < ApplicationController
         file.write(uploaded_io.read)
       end
       product.image_url = filename
+    end
+  end
+
+  def authorizeProduct
+    unless (session[:user_priority] == 5 || session[:user_priority] == 2)
+      redirect_to login_url, :notice => "无权限访问"
     end
   end
 
