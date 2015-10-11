@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authorizeAdmin
+  before_filter :authorize_admin
 
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 

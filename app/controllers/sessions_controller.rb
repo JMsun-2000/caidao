@@ -9,9 +9,16 @@ class SessionsController < ApplicationController
     if user
       session[:user_id] = user.id
       session[:user_priority] = user.priority
+      targe_url = session[:tag_url]
+      session[:tag_url] = nil
+      if targe_url && targe_url != login_url
+        redirect_to targe_url
+        return
+      end
+
       case user.priority
         when 5
-        redirect_to admin_url
+          redirect_to admin_url
         when 2
           redirect_to products_url
         else

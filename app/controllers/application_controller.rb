@@ -10,11 +10,8 @@ class ApplicationController < ActionController::Base
     if request.format == Mime::HTML
       user = User.find_by_id(session[:user_id])
       unless user
+        session[:tag_url] = request.original_url
         redirect_to login_url, :notice => "请登录"
-      else
-        if user.priority == 0
-          redirect_to store_url
-        end
       end
     else
       authenticate_or_request_with_http_basic do |username, password|
@@ -23,13 +20,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authorizeAdmin
+  def authorize_admin
     unless (session[:user_priority] == 5)
       redirect_to login_url, :notice => LocalizeHelper::NO_AUTORITIY_WORD
     end
   end
 
-  def authorizeProduct
+  def authorize_product
     unless (session[:user_priority] == 5 || session[:user_priority] == 2)
       redirect_to login_url, :notice => LocalizeHelper::NO_AUTORITIY_WORD
     end

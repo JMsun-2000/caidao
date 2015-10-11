@@ -1,6 +1,7 @@
 require 'digest/sha2'
 
 class User < ActiveRecord::Base
+  has_many :orders
   ADMIN_TYPES = [0, 1, 2, 3, 4, 5]
   ADMIN_NAMES = ["顾客", "物流", "菜品管理员", "区域经理", "财务", "总管理"]
   ADMIN_MAP = {'顾客' => 0, '物流' => 1, '菜品管理员'=> 2, '区域经理' => 3, '财务' => 4, '总管理' => 5}

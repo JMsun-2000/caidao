@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  skip_before_filter :authorize, :only => [:new, :create]
+  #skip_before_filter :authorize, :only => [:new, :create]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
 
   # GET /orders
@@ -44,6 +44,7 @@ class OrdersController < ApplicationController
   def create
     @order = Order.new(order_params)
     @order.add_line_items_from_cart(current_cart)
+    @order.user_id = session[:user_id]
 
     respond_to do |format|
       if @order.save
@@ -82,6 +83,9 @@ class OrdersController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  protected
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

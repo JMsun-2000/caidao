@@ -1,6 +1,6 @@
 class LineItemsController < ApplicationController
   skip_before_filter :authorize, :only => :create
-  before_filter :authorizeAdmin, only: [:index, :edit, :update, :destroy]
+  before_filter :authorize_admin, only: [:index, :edit, :update, :destroy]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
 
   # GET /line_items

@@ -1,5 +1,5 @@
 class ProductsController < ApplicationController
-  before_filter :authorizeProduct
+  before_filter :authorize_product
   before_action :set_product, only: [:show, :edit, :update, :destroy]
 
   # GET /products
