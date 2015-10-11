@@ -76,12 +76,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def authorizeAdmin
-    unless (session[:user_priority] == 5)
-      redirect_to login_url, :notice => "无权限访问"
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user

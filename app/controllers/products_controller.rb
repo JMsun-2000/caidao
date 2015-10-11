@@ -85,12 +85,6 @@ class ProductsController < ApplicationController
     end
   end
 
-  def authorizeProduct
-    unless (session[:user_priority] == 5 || session[:user_priority] == 2)
-      redirect_to login_url, :notice => "无权限访问"
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_product

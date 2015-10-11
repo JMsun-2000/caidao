@@ -23,6 +23,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def authorizeAdmin
+    unless (session[:user_priority] == 5)
+      redirect_to login_url, :notice => LocalizeHelper::NO_AUTORITIY_WORD
+    end
+  end
+
+  def authorizeProduct
+    unless (session[:user_priority] == 5 || session[:user_priority] == 2)
+      redirect_to login_url, :notice => LocalizeHelper::NO_AUTORITIY_WORD
+    end
+  end
+
   private
   def current_cart
     Cart.find(session[:cart_id])

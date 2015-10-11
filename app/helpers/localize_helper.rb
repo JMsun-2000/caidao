@@ -15,4 +15,5 @@ module LocalizeHelper
   TITLE_WORD = "名称"
   LIST_WORD = "列表"
   COUNTER_WORD = "专柜"
+  NO_AUTORITIY_WORD = "无权限访问"
 end
