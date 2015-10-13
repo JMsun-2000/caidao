@@ -14,3 +14,32 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+public/images/uploads/土豆_Screen Shot 2015-06-16 at 1.21.17 PM.png
+public/images/uploads/wwa_temp.jpg
+public/images/uploads/wwa_psb.png
+public/images/uploads/wwa_liboyu.png
+public/images/uploads/wwa_3E1190670EB96FD5177077AFF7729D64.png
+.idea/workspace.xml
+public/images/uploads/turnip.jpg
+public/images/uploads/jj_temp.jpg
+public/images/uploads/jj_me.jpg.jpeg
+public/images/uploads/jj_TC8_server_M5_location.png
+public/images/uploads/jj_IMG_0031.PNG
+public/images/uploads/jj_Cao Jie.JPG.jpeg
+public/images/uploads/jj_CT16-M6-server-issue.png
+public/images/uploads/hhh_Screen Shot 2015-06-16 at 1.23.04 PM.png
+public/images/uploads/gfsdfg_after_sync_in_ipad.PNG
+public/images/uploads/gfsdfg_IMG_0986.PNG
+public/images/uploads/ff_image.jpg
+public/images/uploads/ff_after_sync_in_server.png
+public/images/uploads/ff_IMG_2904.JPG
+public/images/uploads/ff_IMG_1789.PNG
+public/images/uploads/ff_IMG_0986.PNG
+public/images/uploads/ff_IMG_0031.PNG
+public/images/uploads/ff_2015-07-06_1553.png
+test/fixtures/customers.yml
+test/models/customer_test.rb
+app/models/customer.rb
+public/images/uploads/cabbage.jpg
+db/migrate/20151012153013_fix_column_name_for_customer.rb
+db/migrate/20151012143855_create_customers.rb
