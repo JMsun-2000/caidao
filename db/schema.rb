@@ -11,9 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151011125235) do
+ActiveRecord::Schema.define(version: 20151014132005) do
 
   create_table "carts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "customer_infos", force: true do |t|
+    t.integer  "user_id"
+    t.string   "real_name"
+    t.text     "comment_info"
+    t.integer  "phone_number"
+    t.string   "resturant_address"
+    t.integer  "identify_number"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -57,7 +68,7 @@ ActiveRecord::Schema.define(version: 20151011125235) do
     t.string   "salt"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "priority",        default: 1
+    t.integer  "priority",        default: 0
   end
 
 end

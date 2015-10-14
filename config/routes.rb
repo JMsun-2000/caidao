@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :customer_infos
+
  # get 'admin/index'
  # get 'sessions/new'
  # get 'sessions/create'

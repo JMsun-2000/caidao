@@ -1,0 +1,35 @@
+<h1>Listing customer_infos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Real name</th>
+      <th>Comment info</th>
+      <th>Phone number</th>
+      <th>Resturant address</th>
+      <th>Identify number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @customer_infos.each do |customer_info| %>
+      <tr>
+        <td><%= customer_info.user_id %></td>
+        <td><%= customer_info.real_name %></td>
+        <td><%= customer_info.comment_info %></td>
+        <td><%= customer_info.phone_number %></td>
+        <td><%= customer_info.resturant_address %></td>
+        <td><%= customer_info.identify_number %></td>
+        <td><%= link_to 'Show', customer_info %></td>
+        <td><%= link_to 'Edit', edit_customer_info_path(customer_info) %></td>
+        <td><%= link_to 'Destroy', customer_info, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Customer info', new_customer_info_path %>

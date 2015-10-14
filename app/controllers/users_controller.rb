@@ -21,6 +21,9 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    if (params[:customer])
+      @user.build_customer_info
+    end
   end
 
   # GET /users/1/edit
@@ -84,6 +87,7 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :openpassword, :openpassword_confirmation, :hashed_password, :salt, :priority_name, :priority)
+      params.require(:user).permit(:name, :openpassword, :openpassword_confirmation, :hashed_password, :salt, :priority_name, :priority,
+      customer_info_attributes: [:real_name, :comment_info, :phone_number, :resturant_address, :identify_number])
     end
 end

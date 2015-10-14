@@ -14,21 +14,50 @@
     <fieldset>
       <legend>填写用户信息</legend>
 
-  <div class="field">
-    <%= f.label :name, '用户名' %><br>
-    <%= f.text_field :name, :size => 40 %>
-  </div>
-  <div class="field">
-    <%= f.label :openpassword, '密码' %><br>
-    <%= f.password_field :openpassword, :size => 40 %>
-  </div>
-  <div class="field">
-    <%= f.label :openpassword_confirmation, '确认密码' %><br>
-    <%= f.password_field :openpassword_confirmation, :size => 40 %>
-  </div>
+
       <div class="field">
-        <%= f.label :priority_name, '管理权限' %>
-        <%= f.select :priority_name, User::ADMIN_NAMES,  :prompt => '权限' %>
+        <%= f.label :name, LocalizeHelper::USER_NAME_WORD %><br>
+        <%= f.text_field :name, :size => 40 %>
+      </div>
+      <div class="field">
+        <%= f.label :openpassword, LocalizeHelper::PASSWORD_WORD %><br>
+        <%= f.password_field :openpassword, :size => 40 %>
+      </div>
+      <div class="field">
+        <%= f.label :openpassword_confirmation, LocalizeHelper::PASSWORD_CONFIRMATION_WORD %><br>
+        <%= f.password_field :openpassword_confirmation, :size => 40 %>
+      </div>
+
+      <% unless @user.customer_info %>
+          <div class="field">
+            <%= f.label :priority_name, LocalizeHelper::PRIORTIY_NAME_WORD %>
+            <%= f.select :priority_name, User::ADMIN_NAMES %>
+          </div>
+      <% end %>
+
+      <div id="customer_detail">
+        <%= f.fields_for :customer_info do |cinfo|  %>
+            <div class="field">
+              <%= cinfo.label :real_name, LocalizeHelper::REAL_NAME_WORD %><br>
+              <%= cinfo.text_field :real_name, :size => 40 %>
+            </div>
+            <div class="field">
+              <%= cinfo.label :comment_info, LocalizeHelper::COMMENT_INFO_WORD %><br>
+              <%= cinfo.text_area :comment_info%>
+            </div>
+            <div class="field">
+              <%= cinfo.label :phone_number, LocalizeHelper::PHONE_NUMBER_WORD %><br>
+              <%= cinfo.number_field :phone_number, :size => 40 %>
+            </div>
+            <div class="field">
+              <%= cinfo.label :resturant_address, LocalizeHelper::RESTURANT_ADDRESS_WORD %><br>
+              <%= cinfo.text_field :resturant_address, :size => 40 %>
+            </div>
+            <div class="field">
+              <%= cinfo.label :identify_number, LocalizeHelper::IDENTIFY_NUMBER_WORD %><br>
+              <%= cinfo.number_field :identify_number, :size => 40 %>
+            </div>
+        <% end %>
       </div>
   <div class="actions">
     <%= f.submit :name => "submit_button_name"%>

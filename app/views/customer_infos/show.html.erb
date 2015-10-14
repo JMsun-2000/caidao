@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @customer_info.user_id %>
+</p>
+
+<p>
+  <strong>Real name:</strong>
+  <%= @customer_info.real_name %>
+</p>
+
+<p>
+  <strong>Comment info:</strong>
+  <%= @customer_info.comment_info %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @customer_info.phone_number %>
+</p>
+
+<p>
+  <strong>Resturant address:</strong>
+  <%= @customer_info.resturant_address %>
+</p>
+
+<p>
+  <strong>Identify number:</strong>
+  <%= @customer_info.identify_number %>
+</p>
+
+<%= link_to 'Edit', edit_customer_info_path(@customer_info) %> |
+<%= link_to 'Back', customer_infos_path %>

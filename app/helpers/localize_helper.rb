@@ -16,4 +16,13 @@ module LocalizeHelper
   LIST_WORD = "列表"
   COUNTER_WORD = "专柜"
   NO_AUTORITIY_WORD = "无权限访问"
+  REAL_NAME_WORD = "真实姓名"
+  COMMENT_INFO_WORD = "备注信息"
+  PHONE_NUMBER_WORD = "电话"
+  RESTURANT_ADDRESS_WORD = "餐馆地址"
+  IDENTIFY_NUMBER_WORD = "身份证号"
+  USER_NAME_WORD = "用户名"
+  PASSWORD_WORD = "密码"
+  PASSWORD_CONFIRMATION_WORD = "再次确认密码"
+  PRIORTIY_NAME_WORD = "权限"
 end

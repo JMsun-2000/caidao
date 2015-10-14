@@ -1,19 +1,38 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong><%= LocalizeHelper::USER_NAME_WORD %>: </strong>
   <%= @user.name %>
 </p>
 
 <p>
-  <strong>Hashed password:</strong>
-  <%= @user.hashed_password %>
+  <strong><%= LocalizeHelper::PRIORTIY_NAME_WORD %>: </strong>
+  <%= User::PRIORITY_NAMES[@user.priority] %>
 </p>
 
-<p>
-  <strong>Salt:</strong>
-  <%= @user.salt %>
-</p>
+<% if info = @user.customer_info%>
+
+    <p>
+      <strong><%= LocalizeHelper::REAL_NAME_WORD %>: </strong>
+      <%= info.real_name %>
+    </p>
+    <p>
+      <strong><%= LocalizeHelper::COMMENT_INFO_WORD %>: </strong>
+      <%= info.comment_info %>
+    </p>
+    <p>
+      <strong><%= LocalizeHelper::PHONE_NUMBER_WORD %>: </strong>
+      <%= info.phone_number %>
+    </p>
+    <p>
+      <strong><%= LocalizeHelper::RESTURANT_ADDRESS_WORD %>: </strong>
+      <%= info.resturant_address %>
+    </p>
+    <p>
+      <strong><%= LocalizeHelper::IDENTIFY_NUMBER_WORD %>: </strong>
+      <%= info.identify_number %>
+    </p>
+<% end %>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   has_many :line_items, :dependent => :destroy
-  belongs_to :users
+  belongs_to :user
 
   PAYMENT_TYPES = ["到付", "余额结算", "月结"]
 

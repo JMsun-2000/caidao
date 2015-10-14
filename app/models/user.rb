@@ -2,8 +2,11 @@ require 'digest/sha2'
 
 class User < ActiveRecord::Base
   has_many :orders
-  ADMIN_TYPES = [0, 1, 2, 3, 4, 5]
-  ADMIN_NAMES = ["顾客", "物流", "菜品管理员", "区域经理", "财务", "总管理"]
+  has_one :customer_info, :dependent => :destroy
+  accepts_nested_attributes_for :customer_info
+
+  ADMIN_NAMES = ["物流", "菜品管理员", "区域经理", "财务", "总管理"]
+  PRIORITY_NAMES = ["顾客", "物流", "菜品管理员", "区域经理", "财务", "总管理"]
   ADMIN_MAP = {'顾客' => 0, '物流' => 1, '菜品管理员'=> 2, '区域经理' => 3, '财务' => 4, '总管理' => 5}
 
   validates :name, :presence => true, :uniqueness => true
@@ -15,12 +18,13 @@ class User < ActiveRecord::Base
   validate  :password_must_be_present
 
   def priority_name
-    return ADMIN_NAMES[self.priority-1]
+    return PRIORITY_NAMES[self.priority]
   end
 
   def priority_name=(priority_name)
     @priority_name = priority_name
     self.priority = ADMIN_MAP[priority_name]
+
   end
 
   def openpassword=(password)
@@ -55,7 +59,7 @@ class User < ActiveRecord::Base
   after_destroy :ensure_an_admin_remains
 
   def ensure_an_admin_remains
-    unless (User.find_by priority: 1)
+    unless (User.find_by priority: 5)
       raise "不能删除最后的总管理员"
     end
   end
