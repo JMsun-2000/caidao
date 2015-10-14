@@ -25,14 +25,26 @@
 
         <% if session[:user_id] %>
             <% if session[:user_priority] > 0 %>
-            <ul>
-              <li><%= link_to LocalizeHelper::ORDER_WROD,   orders_path   %></li>
-              <li><%= link_to LocalizeHelper::PRODUCT_WORD, products_path %></li>
-              <li><%= link_to LocalizeHelper::USER_WORD,    users_path    %></li>
-            </ul>
+                <ul>
+                  <% if session[:user_priority] > 2 %>
+                    <li><%= link_to LocalizeHelper::ORDER_WROD,   orders_path   %></li>
+                  <% end %>
+                  <% if session[:user_priority] == 2 || session[:user_priority] == 5 %>
+                    <li><%= link_to LocalizeHelper::PRODUCT_WORD, products_path %></li>
+                  <% end %>
+                  <% if session[:user_priority] == 5 %>
+                    <li><%= link_to LocalizeHelper::USER_WORD,    users_path    %></li>
+                  <% end %>
+              </ul>
+            <% else %>
+                <ul>
+                  <li><%= link_to "#{LocalizeHelper::MY_WORD}#{LocalizeHelper::ORDER_WROD}", customer_order_index_path %> </li>
+                </ul>
             <% end %>
             <%= button_to "#{User::PRIORITY_NAMES[session[:user_priority]]}#{LocalizeHelper::LOGOUT_WORD}", logout_path, :method => :delete   %>
-        <% end %>
+        <% else %>
+            <%= link_to LocalizeHelper::LOGIN_WORD, login_path  %>
+      <% end %>
 
       </div>
     </div>

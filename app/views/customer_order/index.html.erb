@@ -1,0 +1,14 @@
+<h1><%= "#{LocalizeHelper::MY_WORD}#{LocalizeHelper::ORDER_WROD}" %></h1>
+
+<div id="customer_order_list">
+    <% @orders.each do |order| %>
+        <div class="entry">
+          <div><%= order.created_at%></div>
+          <% order.line_items.each do |item| %>
+                <div class="line_item"><%= image_tag("uploads/#{item.product.image_url}", :class => 'product_image')  %>
+                  <%= "#{item.product.title} x #{item.quantity}"%></div>
+            <% end %>
+        </div>
+    <% end %>
+</div>
+

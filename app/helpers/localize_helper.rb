@@ -25,4 +25,6 @@ module LocalizeHelper
   PASSWORD_WORD = "密码"
   PASSWORD_CONFIRMATION_WORD = "再次确认密码"
   PRIORTIY_NAME_WORD = "权限"
+  ALL_WORD = "全部"
+  MY_WORD = "我的"
 end

@@ -6,6 +6,7 @@
 <h1><%= LocalizeHelper::COUNTER_WORD %></h1>
 <div id="store_filter">
   <ul>
+    <li><%= link_to LocalizeHelper::ALL_WORD, store_path, :class => 'filter_button' %></li>
     <% @product_filters.each do |product_type| %>
     <li> <%= link_to product_type, store_path(:product_filter => product_type), :class => 'filter_button' %></li>
     <%end%>

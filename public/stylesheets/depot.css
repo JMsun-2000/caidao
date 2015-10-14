@@ -214,3 +214,12 @@
     width:     100px;
     height:    100px;
 }
+
+#customer_order_list .product_image {
+    width:     70px;
+    height:    70px;
+}
+
+#customer_order_list .line_item {
+    height: 80px;
+}

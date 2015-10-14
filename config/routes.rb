@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'customer_order/index'
+
   resources :customer_infos
 
  # get 'admin/index'
