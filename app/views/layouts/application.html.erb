@@ -38,6 +38,7 @@
               </ul>
             <% else %>
                 <ul>
+                  <li><%= link_to "#{LocalizeHelper::HOME_PAGE_WORD}", store_path%> </li>
                   <li><%= link_to "#{LocalizeHelper::MY_WORD}#{LocalizeHelper::ORDER_WROD}", customer_order_index_path %> </li>
                   <li><%= link_to "#{LocalizeHelper::MY_INFO_WORD}", User.find_by_id(session[:user_id])%> </li>
                 </ul>

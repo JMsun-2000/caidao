@@ -8,6 +8,7 @@ class Order < ActiveRecord::Base
     cart.line_items.each do |item|
       item.cart_id = nil
       item.order_id = :id
+      item.transaction_price = item.product.price
       line_items << item
     end
   end

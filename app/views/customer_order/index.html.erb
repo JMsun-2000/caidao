@@ -6,7 +6,8 @@
           <div><%= order.created_at%></div>
           <% order.line_items.each do |item| %>
                 <div class="line_item"><%= image_tag("uploads/#{item.product.image_url}", :class => 'product_image')  %>
-                  <%= "#{item.product.title} x #{item.quantity}"%></div>
+                  <%= "#{item.product.title} x #{item.quantity}" %> <br/>
+                  <%= "#{LocalizeHelper::PRICE_WORD}   #{number_to_rmb(item.transaction_price ? item.transaction_price: item.product.price )}"%></div>
             <% end %>
         </div>
     <% end %>

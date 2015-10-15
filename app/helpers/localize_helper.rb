@@ -28,4 +28,5 @@ module LocalizeHelper
   ALL_WORD = "全部"
   MY_WORD = "我的"
   MY_INFO_WORD = "我的信息"
+  HOME_PAGE_WORD = "首页"
 end
