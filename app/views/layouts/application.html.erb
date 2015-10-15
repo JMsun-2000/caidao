@@ -39,6 +39,7 @@
             <% else %>
                 <ul>
                   <li><%= link_to "#{LocalizeHelper::MY_WORD}#{LocalizeHelper::ORDER_WROD}", customer_order_index_path %> </li>
+                  <li><%= link_to "#{LocalizeHelper::MY_INFO_WORD}", User.find_by_id(session[:user_id])%> </li>
                 </ul>
             <% end %>
             <%= button_to "#{User::PRIORITY_NAMES[session[:user_priority]]}#{LocalizeHelper::LOGOUT_WORD}", logout_path, :method => :delete   %>

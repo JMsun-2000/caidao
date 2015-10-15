@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_filter :authorize_admin
-
+  before_filter :authorize_admin, only: [:index, :create, :destroy]
+  before_filter :authorize_myself, only: [:show, :edit, :update]
   before_action :set_user, only: [:show, :edit, :update, :destroy]
 
   # GET /users
@@ -83,6 +83,12 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
+    end
+
+    def authorize_myself
+      unless (session[:user_priority] == 5 || params[:id].to_i == session[:user_id].to_i)
+        redirect_to store_url, :notice => LocalizeHelper::NO_AUTORITIY_WORD
+      end
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -27,4 +27,5 @@ module LocalizeHelper
   PRIORTIY_NAME_WORD = "权限"
   ALL_WORD = "全部"
   MY_WORD = "我的"
+  MY_INFO_WORD = "我的信息"
 end
