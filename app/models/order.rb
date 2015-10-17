@@ -13,6 +13,6 @@ class Order < ActiveRecord::Base
     end
   end
 
-  validates :name, :address, :email, :pay_type, :user_id, :presence => true
+  validates :name, :delivery_address, :delivery_phone, :pay_type, :user_id, :presence => true
   validates :pay_type, :inclusion => PAYMENT_TYPES
 end

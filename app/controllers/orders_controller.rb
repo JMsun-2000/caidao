@@ -1,6 +1,7 @@
 class OrdersController < ApplicationController
-  #skip_before_filter :authorize, :only => [:new, :create]
+  before_filter :authorize_admin, :only => [:show, :edit, :update, :destroy, :index]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_user, only: [:new]
 
   # GET /orders
   # GET /orders.json
@@ -28,6 +29,13 @@ class OrdersController < ApplicationController
     end
 
     @order = Order.new
+    @order.delivery_time = DateTime.now.tomorrow
+    if (@user && @user.customer_info)
+      @order.name = @user.customer_info.real_name
+      @order.delivery_address =  @user.customer_info.resturant_address
+      @order.delivery_phone = @user.customer_info.phone_number
+    end
+
 
     respond_to do |format|
       format.html
@@ -93,8 +101,12 @@ class OrdersController < ApplicationController
       @order = Order.find(params[:id])
     end
 
+    def set_user
+      @user = User.find(session[:user_id])
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :email, :pay_type)
+      params.require(:order).permit(:name, :delivery_address, :delivery_phone, :pay_type, :delivery_time)
     end
 end

@@ -33,32 +33,32 @@
             <%= f.label :priority_name, LocalizeHelper::PRIORTIY_NAME_WORD %>
             <%= f.select :priority_name, User::ADMIN_NAMES %>
           </div>
+      <% else %>
+          <div id="customer_detail">
+            <%= f.fields_for :customer_info do |cinfo|  %>
+                <div class="field">
+                  <%= cinfo.label :real_name, LocalizeHelper::REAL_NAME_WORD %><br>
+                  <%= cinfo.text_field :real_name, :size => 40 %>
+                </div>
+                <div class="field">
+                  <%= cinfo.label :comment_info, LocalizeHelper::COMMENT_INFO_WORD %><br>
+                  <%= cinfo.text_area :comment_info%>
+                </div>
+                <div class="field">
+                  <%= cinfo.label :phone_number, LocalizeHelper::PHONE_NUMBER_WORD %><br>
+                  <%= cinfo.number_field :phone_number, :size => 40 %>
+                </div>
+                <div class="field">
+                  <%= cinfo.label :resturant_address, LocalizeHelper::RESTURANT_ADDRESS_WORD %><br>
+                  <%= cinfo.text_field :resturant_address, :size => 40 %>
+                </div>
+                <div class="field">
+                  <%= cinfo.label :identify_number, LocalizeHelper::IDENTIFY_NUMBER_WORD %><br>
+                  <%= cinfo.number_field :identify_number, :size => 40 %>
+                </div>
+            <% end %>
+          </div>
       <% end %>
-
-      <div id="customer_detail">
-        <%= f.fields_for :customer_info do |cinfo|  %>
-            <div class="field">
-              <%= cinfo.label :real_name, LocalizeHelper::REAL_NAME_WORD %><br>
-              <%= cinfo.text_field :real_name, :size => 40 %>
-            </div>
-            <div class="field">
-              <%= cinfo.label :comment_info, LocalizeHelper::COMMENT_INFO_WORD %><br>
-              <%= cinfo.text_area :comment_info%>
-            </div>
-            <div class="field">
-              <%= cinfo.label :phone_number, LocalizeHelper::PHONE_NUMBER_WORD %><br>
-              <%= cinfo.number_field :phone_number, :size => 40 %>
-            </div>
-            <div class="field">
-              <%= cinfo.label :resturant_address, LocalizeHelper::RESTURANT_ADDRESS_WORD %><br>
-              <%= cinfo.text_field :resturant_address, :size => 40 %>
-            </div>
-            <div class="field">
-              <%= cinfo.label :identify_number, LocalizeHelper::IDENTIFY_NUMBER_WORD %><br>
-              <%= cinfo.number_field :identify_number, :size => 40 %>
-            </div>
-        <% end %>
-      </div>
   <div class="actions">
     <%= f.submit :name => "submit_button_name"%>
   </div>

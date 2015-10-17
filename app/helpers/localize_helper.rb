@@ -29,4 +29,8 @@ module LocalizeHelper
   MY_WORD = "我的"
   MY_INFO_WORD = "我的信息"
   HOME_PAGE_WORD = "首页"
+  NAME_WORD = "姓名"
+  DELIVERY_ADDRESS_WORD = "送货地址"
+  DELIVERY_TIME_WORD = "要货时间"
+  DELIVERY_PHONE_WORD = "联系电话"
 end

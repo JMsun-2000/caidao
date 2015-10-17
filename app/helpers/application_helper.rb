@@ -10,3 +10,4 @@ module ApplicationHelper
     return "#{number_with_precision(number, :precision => 2)}元"
   end
 end
+

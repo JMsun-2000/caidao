@@ -12,17 +12,22 @@
   <% end %>
 
   <div class="field">
-    <%= f.label '姓名' %>
+    <%= f.label LocalizeHelper::NAME_WORD %>
     <%= f.text_field :name, :size => 40 %>
   </div>
   <div class="field">
-    <%= f.label '收货地址' %>
-    <%= f.text_area :address, :rows => 3, :cols => 40 %>
+    <%= f.label LocalizeHelper::DELIVERY_ADDRESS_WORD %>
+    <%= f.text_area :delivery_address, :rows => 3, :cols => 40 %>
   </div>
   <div class="field">
-    <%= f.label '电话' %>
-    <%= f.text_field :email, :size => 40 %>
+    <%= f.label LocalizeHelper::DELIVERY_PHONE_WORD %>
+    <%= f.text_field :delivery_phone, :size => 40 %>
   </div>
+    <div class="field">
+      <%= f.label LocalizeHelper::DELIVERY_TIME_WORD %>
+      <%= f.date_select :delivery_time, :start_year => Date.tomorrow.year, :end_year => Date.tomorrow.year+1,
+                        :use_month_numbers => true %>
+    </div>
   <div class="field">
     <%= f.label '支付方式' %>
     <%= f.select :pay_type, Order::PAYMENT_TYPES, :prompt => '选择支付方式' %>
