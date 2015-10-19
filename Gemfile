@@ -39,3 +39,5 @@ gem 'will_paginate', '>= 3.0.pre'
 # Use debugger
 # gem 'debugger', group: [:development, :test]
 
+gem 'alipay', :github => 'chloerei/alipay'
+

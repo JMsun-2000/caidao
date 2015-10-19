@@ -1,5 +1,6 @@
 class OrdersController < ApplicationController
-  before_filter :authorize_admin, :only => [:show, :edit, :update, :destroy, :index]
+  before_filter :authorize_admin, :only => [:show, :edit, :update, :destroy, :index], :except => [:alipay_notify]
+  skip_before_filter :authorize, :only => [:alipay_notify]
   before_action :set_order, only: [:show, :edit, :update, :destroy]
   before_action :set_user, only: [:new]
 
@@ -18,6 +19,15 @@ class OrdersController < ApplicationController
   # GET /orders/1
   # GET /orders/1.json
   def show
+    # 友好的提示当前订单的状态
+    callback_params = params.except(*request.path_parameters.keys)
+    if callback_params.any? && Alipay::Sign.verify?(callback_params)
+      if @order.paid? || @order.completed?
+        flash.now[:success] = I18n.t('支付完成')
+      elsif @order.pending?
+        flash.now[:info] = I18n.t('待付款')
+      end
+    end
   end
 
   # GET /orders/new
@@ -58,9 +68,15 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
+
+        if order_params[:pay_type].to_s == Order::PAYMENT_TYPES[0].to_s
+          redirect_to @order.pay_url
+          return
+        else
        # Notifier.order_received(@order).deliver
         format.html { redirect_to store_url, notice: '订单已下' }
         format.json { render json: @order, status: :created, location: @order }
+        end
       else
         format.html { render :new }
         format.json { render json: @order.errors, status: :unprocessable_entity }
@@ -92,6 +108,38 @@ class OrdersController < ApplicationController
     end
   end
 
+  # 支付宝异步消息接口
+  def alipay_notify
+    notify_params = params.except(*request.path_parameters.keys)
+    # 先校验消息的真实性
+    if Alipay::Sign.verify?(notify_params) && Alipay::Notify.verify?(notify_params)
+      # 获取交易关联的订单
+      @order = Order.find params[:out_trade_no]
+
+      case params[:trade_status]
+        when 'WAIT_BUYER_PAY'
+          # 交易开启
+          @order.update_attribute :trade_no, params[:trade_no]
+          @order.pend
+        when 'WAIT_SELLER_SEND_GOODS'
+          # 买家完成支付
+          @order.pay
+          # 虚拟物品无需发货，所以立即调用发货接口
+          @order.send_good
+        when 'TRADE_FINISHED'
+          # 交易完成
+          @order.complete
+        when 'TRADE_CLOSED'
+          # 交易被关闭
+          @order.cancel
+      end
+
+      render :text => 'success' # 成功接收消息后，需要返回纯文本的 ‘success’，否则支付宝会定时重发消息，最多重试7次。
+    else
+      render :text => 'error'
+    end
+  end
+
   protected
 
 
@@ -107,6 +155,6 @@ class OrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :delivery_address, :delivery_phone, :pay_type, :delivery_time)
+      params.require(:order).permit(:name, :delivery_address, :delivery_phone, :pay_type, :delivery_time, :state, :trade_no)
     end
 end

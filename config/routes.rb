@@ -18,7 +18,11 @@ Rails.application.routes.draw do
 
   resources :users
 
-  resources :orders
+  resources :orders, :only => [:index, :new, :create, :show] do
+    collection do
+      post :alipay_notify
+    end
+  end
 
   resources :line_items
 

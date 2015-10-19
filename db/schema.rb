@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151017073943) do
+ActiveRecord::Schema.define(version: 20151019090439) do
 
   create_table "carts", force: true do |t|
     t.datetime "created_at"
@@ -49,6 +49,8 @@ ActiveRecord::Schema.define(version: 20151017073943) do
     t.integer  "user_id"
     t.integer  "logistics_status", default: 0
     t.datetime "delivery_time",    default: '2015-10-16 15:29:01'
+    t.string   "state",            default: "opening"
+    t.integer  "trade_no"
   end
 
   create_table "products", force: true do |t|
