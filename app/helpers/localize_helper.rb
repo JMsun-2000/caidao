@@ -33,4 +33,9 @@ module LocalizeHelper
   DELIVERY_ADDRESS_WORD = "送货地址"
   DELIVERY_TIME_WORD = "要货时间"
   DELIVERY_PHONE_WORD = "联系电话"
+  PAY_TYPE_WORD = "支付方式"
+  ALIPAY_STATE_WORD = "支付宝状态"
+  ALIPAY_TRADE_NO_WORD = "支付宝交易号"
+  SHOW_WORD = "显示"
+  DELETE_WORD = "删除"
 end

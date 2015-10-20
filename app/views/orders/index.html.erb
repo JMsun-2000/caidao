@@ -3,11 +3,13 @@
 <table>
   <thead>
     <tr>
-      <th>姓名</th>
-      <th>收货地址</th>
-      <th>电话</th>
-      <th>支付方式</th>
-      <th colspan="3"></th>
+      <th><%="#{LocalizeHelper::NAME_WORD}"%></th>
+      <th><%="#{LocalizeHelper::DELIVERY_ADDRESS_WORD}"%></th>
+      <th><%="#{LocalizeHelper::PHONE_NUMBER_WORD}"%></th>
+      <th><%="#{LocalizeHelper::PAY_TYPE_WORD}"%></th>
+      <th><%="#{LocalizeHelper::ALIPAY_STATE_WORD}"%></th>
+      <th><%="#{LocalizeHelper::ALIPAY_TRADE_NO_WORD}"%></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
@@ -18,8 +20,10 @@
         <td><%= order.delivery_address %></td>
         <td><%= order.delivery_phone %></td>
         <td><%= order.pay_type %></td>
-        <td><%= link_to '显示', order %></td>
-        <td><%= link_to '删除', order, method: :delete, data: { confirm: '确定删除?' } %></td>
+        <td><%= order.state %></td>
+        <td><%= order.trade_no %></td>
+        <td><%= link_to "#{LocalizeHelper::SHOW_WORD}", order %></td>
+        <td><%= link_to "#{LocalizeHelper::DELETE_WORD}", order, method: :delete, data: { confirm: '确定删除?' } %></td>
       </tr>
     <% end %>
   </tbody>

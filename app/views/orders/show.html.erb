@@ -1,23 +1,33 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>姓名:</strong>
+  <strong><%="#{LocalizeHelper::NAME_WORD}"%>:</strong>
   <%= @order.name %>
 </p>
 
 <p>
-  <strong>收货地址:</strong>
+  <strong><%="#{LocalizeHelper::DELIVERY_ADDRESS_WORD}"%>:</strong>
   <%= @order.delivery_address %>
 </p>
 
 <p>
-  <strong>电话:</strong>
+  <strong><%="#{LocalizeHelper::PHONE_NUMBER_WORD}"%>:</strong>
   <%= @order.delivery_phone %>
 </p>
 
 <p>
-  <strong>支付方式:</strong>
+  <strong><%="#{LocalizeHelper::PAY_TYPE_WORD}"%>:</strong>
   <%= @order.pay_type %>
+</p>
+
+<p>
+  <strong><%="#{LocalizeHelper::ALIPAY_STATE_WORD}"%>:</strong>
+  <%= @order.state %>
+</p>
+
+<p>
+  <strong><%="#{LocalizeHelper::ALIPAY_TRADE_NO_WORD}"%>:</strong>
+  <%= @order.trade_no %>
 </p>
 
 <%= link_to 'Back', orders_path %>
