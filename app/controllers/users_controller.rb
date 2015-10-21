@@ -86,7 +86,7 @@ class UsersController < ApplicationController
     end
 
     def authorize_myself
-      unless (session[:user_priority] == 5 || params[:id].to_i == session[:user_id].to_i)
+      unless (session[:user_priority] == User::ADMIN_MAP['总管理'] || params[:id].to_i == session[:user_id].to_i)
         redirect_to store_url, :notice => LocalizeHelper::NO_AUTORITIY_WORD
       end
     end

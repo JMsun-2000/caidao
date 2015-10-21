@@ -3,7 +3,7 @@
 <%= render 'form' %>
 
 <%= link_to 'Show', @user %> |
-<% if session[:user_priority] == 5 %>
+<% if session[:user_priority] == User::ADMIN_MAP['总管理'] %>
     <%= link_to 'Back', users_path %>
 <% else %>
     <%= link_to 'Back', store_path %>

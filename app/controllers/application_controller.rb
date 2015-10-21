@@ -21,13 +21,13 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize_admin
-    unless (session[:user_priority] == 5)
+    unless (session[:user_priority] == User::ADMIN_MAP['总管理'])
       redirect_to login_url, :notice => LocalizeHelper::NO_AUTORITIY_WORD
     end
   end
 
   def authorize_product
-    unless (session[:user_priority] == 5 || session[:user_priority] == 2)
+    unless (session[:user_priority] == User::ADMIN_MAP['总管理'] || session[:user_priority] == User::ADMIN_MAP['菜品管理员'] || session[:user_priority] == User::ADMIN_MAP['菜农'])
       redirect_to login_url, :notice => LocalizeHelper::NO_AUTORITIY_WORD
     end
   end

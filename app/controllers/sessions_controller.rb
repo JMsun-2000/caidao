@@ -17,9 +17,9 @@ class SessionsController < ApplicationController
       end
 
       case user.priority
-        when 5
+        when User::ADMIN_MAP['总管理']
           redirect_to admin_url
-        when 2
+        when User::ADMIN_MAP['菜品管理员']
           redirect_to products_url
         else
           redirect_to store_url

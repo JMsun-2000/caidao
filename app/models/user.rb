@@ -2,12 +2,13 @@ require 'digest/sha2'
 
 class User < ActiveRecord::Base
   has_many :orders
+  has_many :products
   has_one :customer_info, :dependent => :destroy
   accepts_nested_attributes_for :customer_info
 
-  ADMIN_NAMES = ["物流", "菜品管理员", "区域经理", "财务", "总管理"]
-  PRIORITY_NAMES = ["顾客", "物流", "菜品管理员", "区域经理", "财务", "总管理"]
-  ADMIN_MAP = {'顾客' => 0, '物流' => 1, '菜品管理员'=> 2, '区域经理' => 3, '财务' => 4, '总管理' => 5}
+  ADMIN_NAMES = %w(菜农 物流 菜品管理员 区域经理 财务 总管理)
+  PRIORITY_NAMES = %w(顾客 菜农 物流 菜品管理员 区域经理 财务 总管理)
+  ADMIN_MAP = {'顾客' => 0, '菜农' => 1, '物流' => 2, '菜品管理员'=> 3, '区域经理' => 4, '财务' => 5, '总管理' => 6}
 
   validates :name, :presence => true, :uniqueness => true
   validates :priority, :presence => true
@@ -59,7 +60,7 @@ class User < ActiveRecord::Base
   after_destroy :ensure_an_admin_remains
 
   def ensure_an_admin_remains
-    unless (User.find_by priority: 5)
+    unless (User.find_by priority: ADMIN_MAP['总管理'])
       raise "不能删除最后的总管理员"
     end
   end

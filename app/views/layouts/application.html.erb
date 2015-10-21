@@ -26,13 +26,15 @@
         <% if session[:user_id] %>
             <% if session[:user_priority] > 0 %>
                 <ul>
-                  <% if session[:user_priority] > 2 %>
+                  <% if session[:user_priority] > User::ADMIN_MAP['菜品管理员'] %>
                     <li><%= link_to LocalizeHelper::ORDER_WROD,   orders_path   %></li>
                   <% end %>
-                  <% if session[:user_priority] == 2 || session[:user_priority] == 5 %>
+                  <% if session[:user_priority] == User::ADMIN_MAP['菜品管理员']\
+                       || session[:user_priority] == User::ADMIN_MAP['总管理']\
+                       || session[:user_priority] == User::ADMIN_MAP['菜农']%>
                     <li><%= link_to LocalizeHelper::PRODUCT_WORD, products_path %></li>
                   <% end %>
-                  <% if session[:user_priority] == 5 %>
+                  <% if session[:user_priority] == User::ADMIN_MAP['总管理'] %>
                     <li><%= link_to LocalizeHelper::USER_WORD,    users_path    %></li>
                   <% end %>
               </ul>

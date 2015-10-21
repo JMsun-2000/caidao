@@ -5,7 +5,11 @@ class ProductsController < ApplicationController
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    if (session[:user_priority] == User::ADMIN_MAP['菜农'])
+      @products = Product.where(:user_id => session[:user_id]).to_a
+    else
+      @products = Product.all
+    end
   end
 
   # GET /products/1
@@ -28,6 +32,10 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @cart = current_cart
     upload(@product)
+
+    if (session[:user_priority] == User::ADMIN_MAP['菜农'])
+      @product.user_id = session[:user_id]
+    end
 
     respond_to do |format|
       if @product.save
@@ -93,6 +101,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:title, :description, :image_url, :price, :picture, :unit, :origin, :inventory, :product_type, :sub_type)
+      params.require(:product).permit(:title, :description, :image_url, :price, :picture, :unit, :origin, :inventory, :product_type, :sub_type, :user_id)
     end
 end

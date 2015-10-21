@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
   default_scope {order('title')}
   has_many :line_items
   has_many :orders, :through => :line_items
+  belongs_to :user
   before_destroy :ensure_not_referenced_by_any_line_item
 
   PRODUCT_TYPES = ["蔬菜", "水果", "肉禽", "副食品", "粮油", "调料"]
