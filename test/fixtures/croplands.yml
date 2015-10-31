@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: MyString
+  land_area: 1
+  area_unit: MyString
+  land_production: MyString
+  land_output: 1
+  output_unit: MyString
+  output_cycle: 1
+  latest_seeding_date: 2015-10-26 20:17:41
+  product_id: 1
+
+two:
+  user_id: MyString
+  land_area: 1
+  area_unit: MyString
+  land_production: MyString
+  land_output: 1
+  output_unit: MyString
+  output_cycle: 1
+  latest_seeding_date: 2015-10-26 20:17:41
+  product_id: 1

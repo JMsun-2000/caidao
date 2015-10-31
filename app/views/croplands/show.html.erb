@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @cropland.user_id %>
+</p>
+
+<p>
+  <strong>Land area:</strong>
+  <%= @cropland.land_area %>
+</p>
+
+<p>
+  <strong>Area unit:</strong>
+  <%= @cropland.area_unit %>
+</p>
+
+<p>
+  <strong>Land production:</strong>
+  <%= @cropland.land_production %>
+</p>
+
+<p>
+  <strong>Land output:</strong>
+  <%= @cropland.land_output %>
+</p>
+
+<p>
+  <strong>Output unit:</strong>
+  <%= @cropland.output_unit %>
+</p>
+
+<p>
+  <strong>Output cycle:</strong>
+  <%= @cropland.output_cycle %>
+</p>
+
+<p>
+  <strong>Latest seeding date:</strong>
+  <%= @cropland.latest_seeding_date %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @cropland.product_id %>
+</p>
+
+<%= link_to 'Edit', edit_cropland_path(@cropland) %> |
+<%= link_to 'Back', croplands_path %>

@@ -1,0 +1,49 @@
+<%= form_for(@cropland) do |f| %>
+  <% if @cropland.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cropland.errors.count, "error") %> prohibited this cropland from being saved:</h2>
+
+      <ul>
+      <% @cropland.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :land_area %><br>
+    <%= f.number_field :land_area %>
+  </div>
+  <div class="field">
+    <%= f.label :area_unit %><br>
+    <%= f.text_field :area_unit %>
+  </div>
+  <div class="field">
+    <%= f.label :land_production %><br>
+    <%= f.text_field :land_production %>
+  </div>
+  <div class="field">
+    <%= f.label :land_output %><br>
+    <%= f.number_field :land_output %>
+  </div>
+  <div class="field">
+    <%= f.label :output_unit %><br>
+    <%= f.text_field :output_unit %>
+  </div>
+  <div class="field">
+    <%= f.label :output_cycle %><br>
+    <%= f.number_field :output_cycle %>
+  </div>
+  <div class="field">
+    <%= f.label :latest_seeding_date %><br>
+    <%= f.datetime_select :latest_seeding_date %>
+  </div>
+  <div class="field">
+    <%= f.label :product_id %><br>
+    <%= f.number_field :product_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

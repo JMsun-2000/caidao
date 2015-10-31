@@ -3,6 +3,7 @@ require 'digest/sha2'
 class User < ActiveRecord::Base
   has_many :orders
   has_many :products
+  has_many :croplands
   has_one :customer_info, :dependent => :destroy
   accepts_nested_attributes_for :customer_info
 

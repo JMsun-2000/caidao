@@ -38,4 +38,5 @@ module LocalizeHelper
   ALIPAY_TRADE_NO_WORD = "支付宝交易号"
   SHOW_WORD = "显示"
   DELETE_WORD = "删除"
+  CROPLAND_MANAGER_WORD = "农田管理"
 end

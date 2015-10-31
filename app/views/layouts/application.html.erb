@@ -34,6 +34,10 @@
                        || session[:user_priority] == User::ADMIN_MAP['菜农']%>
                     <li><%= link_to LocalizeHelper::PRODUCT_WORD, products_path %></li>
                   <% end %>
+                  <% if session[:user_priority] == User::ADMIN_MAP['总管理']\
+                       || session[:user_priority] == User::ADMIN_MAP['菜农']%>
+                      <li><%= link_to LocalizeHelper::CROPLAND_MANAGER_WORD, croplands_path %></li>
+                  <% end %>
                   <% if session[:user_priority] == User::ADMIN_MAP['总管理'] %>
                     <li><%= link_to LocalizeHelper::USER_WORD,    users_path    %></li>
                   <% end %>

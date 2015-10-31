@@ -11,9 +11,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151021151011) do
+ActiveRecord::Schema.define(version: 20151026121741) do
 
   create_table "carts", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "croplands", force: true do |t|
+    t.string   "user_id"
+    t.integer  "land_area"
+    t.string   "area_unit"
+    t.string   "land_production"
+    t.integer  "land_output"
+    t.string   "output_unit"
+    t.integer  "output_cycle"
+    t.datetime "latest_seeding_date"
+    t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

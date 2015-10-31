@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :croplands
+
   get 'customer_order/index'
 
   resources :customer_infos
