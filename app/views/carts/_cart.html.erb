@@ -1,13 +1,17 @@
-
 <div class="cart_title">你的购物车</div>
-<table>
+<div class="cart_content">
   <%= render(cart.line_items) %>
 
-  <tr class="total_line">
-    <td colspan="4">总计</td>
-    <td class="total_cell"><%= number_to_rmb(cart.total_price)%></td>
-  </tr>
-</table>
-
-<%= button_to "结算", new_order_path, :method => :get %>
-<%= button_to '清空', cart, :method => :delete, data:{:confirm => '确定清空吗'} %>
+  <div class="cart_item">
+  <ul class="total_line">
+    <li class="item_name">总计</li>
+    <li class="total_cell"><%= number_to_rmb(cart.total_price)%></li>
+  </ul>
+  </div>
+  <div class="cart_item">
+    <ul>
+      <li class="cart_button"><%= button_to "结算", new_order_path, :method => :get %></li>
+      <li class="cart_button"><%= button_to '清空', cart, :method => :delete, data:{:confirm => '确定清空吗'} %></li>
+    </ul>
+  </div>
+</div>

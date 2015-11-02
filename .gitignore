@@ -43,3 +43,5 @@ app/models/customer.rb
 public/images/uploads/cabbage.jpg
 db/migrate/20151012153013_fix_column_name_for_customer.rb
 db/migrate/20151012143855_create_customers.rb
+public/images/uploads/jljjl_Screen Shot 2015-10-13 at 7.38.28 PM.png
+public/images/uploads/jlkj_Screen Shot 2015-10-15 at 10.17.43 AM.png

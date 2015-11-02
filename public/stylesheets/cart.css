@@ -1,0 +1,50 @@
+
+.cart_title {background:url(/images/cart/lstc_07.jpg) no-repeat; width:200px; height:35px; line-height:35px;padding-left:10px; color:#fff; font-family:microsoft yahei; font-size:17px; }
+.cart_content {border:1px solid #dddddd; width:198px; overflow:hidden; }
+
+.cart_content .cart_item {
+    width: 198px;
+    height:22px;
+    background-color: #eeffee;
+}
+
+.cart_content .cart_item ul {
+    margin: 0px;
+    padding: 0px;
+    width: 198px;
+    height: 22px;
+}
+.cart_content .cart_item ul li {
+    float: left;
+    text-align: left;
+    height:18px;
+    padding: 2px;
+}
+
+.cart_content .cart_item .item_name{
+    width: 50px;
+    font-weight: bolder;
+    padding-left: 10px;
+}
+
+.cart_content .cart_item .item_count{
+    width: 15px;
+    color: blue;
+    text-align: right;
+}
+
+.cart_content .cart_item .item_price {
+    float: right;
+    padding-right: 5px;
+}
+
+.cart_content .cart_item .total_cell {
+    color: #730E15;
+    float: right;
+    padding-right: 5px;
+}
+
+.cart_content .cart_item .cart_button {
+    float: right;
+    padding-right: 5px;
+}

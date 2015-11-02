@@ -2,19 +2,86 @@
 <html>
 <head>
   <title>菜道</title>
-  <%= stylesheet_link_tag  "scaffold"%>
   <%= stylesheet_link_tag  "depot", :media => "all"%>
-  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag  "cart", :media => "all"%>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body id="store">
-    <div id="banner">
-      <%= image_tag("logo.png") %>
-      <%= @page_title || "菜道市场" %>
+  <div class="lstc_header">
+    <div class="lstc_header_top">
+      <div class="lstc_header_top_login">
+        您好，欢迎光临市场！
+        <span>
+          <% if session[:user_id] %>
+            <%= link_to "#{User::PRIORITY_NAMES[session[:user_priority]]}#{LocalizeHelper::LOGOUT_WORD}", logout_path, :method => :delete   %>
+          <% else %>
+            <%= link_to LocalizeHelper::LOGIN_WORD, login_path  %>
+          <% end %>
+        </span>
+      </div>
+
+      <div class="lstc_header_top_cart"><a href="/ShoppingCart.aspx" target="_blank">
+        购物车<span>0</span> 件，合计<span>￥<span id="SubCategory_ctl04___cartMoney">0.00</span></span>元   </a>
+      </div>
+      <div class="lstc_header_top_links">
+        <span><%= link_to "#{LocalizeHelper::MY_INFO_WORD}", User.find_by_id(session[:user_id])%></span>|
+        <span><%= link_to "#{LocalizeHelper::MY_WORD}#{LocalizeHelper::ORDER_WROD}", customer_order_index_path %></span>|
+        <span><a href="/">帮助中心</a></span>|
+        <span><a href="/">客户留言</a></span>
+      </div>
     </div>
+
+    <div class="lstc_header_center">
+      <div class="lstc_header_logo"><a href="/"><%= image_tag("logo.png") %></a></div>
+      <div class="lstc_header_tel"><img title="400a" border="0" alt="400a" src="/images/mainpage/connectionphone.jpg"> <p>&nbsp;</p></div>
+      <div class="lstc_header_search">
+        <div class="lstc_header_search_text"><input type="text" id="txt_Search_Keywords" value="" onfocus="if(this.value=='请输入搜索关键字...'){this.value='';this.style.color='black'}" onblur="if(this.value==''){this.value='请输入搜索关键字...';this.style.color='#ccc'}"></div>
+        <div class="lstc_header_search_button"> <input type="button" value="搜索" onclick="searchs()"></div>
+      </div>
+    </div>
+
+    <div class="lstc_header_bottom">
+      <div class="nav_c" id="ty_menu_title">
+        <div class="allcate"><a onmouseover="listShow1()" onmouseout="loops1()">全部商品分类</a>
+        </div>
+        <ul id="lstc_header_bottom_menu">
+          <a class="lstc_homepage" href="/">首 页</a>
+          <li><a href="">优惠促销</a></li>
+          <li><a href="">时令优选</a></li>
+          <li id="tgqiangg_pd"> <span><a href="">限时抢购</a></span>  </li>
+          <li><a href="">商城资讯</a></li>
+          <li><a href="">活动专区</a></li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="content_body">
     <div id="columns">
-      <div id="side">
+      <% if @product_filters %>
+      <div class="my_left_category">
+        <ul>
+          <div class="my_left_cat_list">
+            <div class="h2_cat">
+              <h3>
+                <%= link_to LocalizeHelper::ALL_WORD, store_path %>
+              </h3>
+            </div>
+          </div>
+          <% @product_filters.each do |product_type| %>
+              <div class="my_left_cat_list">
+                <div class="h2_cat">
+                  <h3>
+                    <%= link_to product_type, store_path(:product_filter => product_type) %>
+                  </h3>
+                </div>
+              </div>
+          <%end%>
+        </ul>
+      </div>
+      <% end %>
         <div id="showhidecart">
           <% if @cart %>
               <%= hidden_div_if(@cart.line_items.empty?, :id => "cart") do %>
@@ -23,8 +90,7 @@
           <% end %>
         </div>
 
-        <% if session[:user_id] %>
-            <% if session[:user_priority] > 0 %>
+            <% if session[:user_id] && session[:user_priority] > 0 %>
                 <ul>
                   <% if session[:user_priority] > User::ADMIN_MAP['菜品管理员'] %>
                     <li><%= link_to LocalizeHelper::ORDER_WROD,   orders_path   %></li>
@@ -42,22 +108,11 @@
                     <li><%= link_to LocalizeHelper::USER_WORD,    users_path    %></li>
                   <% end %>
               </ul>
-            <% else %>
-                <ul>
-                  <li><%= link_to "#{LocalizeHelper::HOME_PAGE_WORD}", store_path%> </li>
-                  <li><%= link_to "#{LocalizeHelper::MY_WORD}#{LocalizeHelper::ORDER_WROD}", customer_order_index_path %> </li>
-                  <li><%= link_to "#{LocalizeHelper::MY_INFO_WORD}", User.find_by_id(session[:user_id])%> </li>
-                </ul>
             <% end %>
-            <%= button_to "#{User::PRIORITY_NAMES[session[:user_priority]]}#{LocalizeHelper::LOGOUT_WORD}", logout_path, :method => :delete   %>
-        <% else %>
-            <%= link_to LocalizeHelper::LOGIN_WORD, login_path  %>
-      <% end %>
-
-      </div>
     </div>
     <div id="main">
       <%= yield %>
     </div>
+  </div>
 </body>
 </html>

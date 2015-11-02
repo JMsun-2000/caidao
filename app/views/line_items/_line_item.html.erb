@@ -1,12 +1,13 @@
+<div class="cart_item">
 <% if line_item == @current_item %>
-    <tr id="current_item">
+    <ul id="current_item">
 <% else %>
-    <tr>
+    <ul>
 <% end %>
-  <td><%= line_item.product.title %></td>
-  <td><%= button_to '-', line_items_path(:product_id => line_item.product, :number_change => -1), :remote => true%></td>
-  <td><%= line_item.quantity %> </td>
-  <td><%= button_to '+', line_items_path(:product_id => line_item.product, :number_change => 1), :remote => true%></td>
-  <td class="item_price">共<%= number_to_rmb(line_item.total_price) %></td>
-
-</tr>
+  <li class="item_name"><%= line_item.product.title %></li>
+  <li><%= button_to '-', line_items_path(:product_id => line_item.product, :number_change => -1), :remote => true%></li>
+  <li class="item_count"><%= line_item.quantity %> </li>
+  <li><%= button_to '+', line_items_path(:product_id => line_item.product, :number_change => 1), :remote => true%></li>
+  <li class="item_price"><%= number_to_rmb(line_item.total_price) %></li>
+</ul>
+</div>
