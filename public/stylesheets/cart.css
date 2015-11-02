@@ -51,7 +51,7 @@
 
 /* 种类细分 */
 .category_r{ width:765px; float:right; overflow:hidden; padding-bottom:5px;_padding-bottom:0px; margin-top:15px;}
-.category_shaixuan{ border:1px solid #ebebeb; overflow:hidden; width:763px;}
+.category_shaixuan{ border:1px solid #ebebeb; overflow:hidden; width:763px; padding-bottom: 10px;}
 .spfl_r_table_tit {height:32px; overflow:hidden; background:url(../lstc_images/lstc_spfl/spfl_03.jpg) repeat-x; padding-left:12px; font-family: microsoft yahei; font-size:14px; font-weight:700; line-height:29px; color:#707070;}
 .choose_pro_tab{ color:#1f1f1f; overflow:hidden;margin-left:10px;}
 .choose_pro_tab li { float:left;}
