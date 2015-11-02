@@ -19,6 +19,10 @@
       <%= f.label LocalizeHelper::PRODUCT_TYPE_WORD %><br/>
       <%= f.select :product_type, Product::PRODUCT_TYPES %>
     </div>
+    <div class="field">
+      <%= f.label '种类细分' %><br/>
+      <%= f.text_field :sub_type %>
+    </div>
   <div class="field">
     <%= f.label LocalizeHelper::IMAGE_WORD %><br/>
     <% if @product.picture

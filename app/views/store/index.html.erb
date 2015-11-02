@@ -2,17 +2,30 @@
     <p id="notice"><%= notice %></p>
 <% end %>
 
-
-<h1><%= LocalizeHelper::COUNTER_WORD %></h1>
-<div id="store_filter">
-  <ul>
-    <li><%= link_to LocalizeHelper::ALL_WORD, store_path, :class => 'filter_button' %></li>
-    <% @product_filters.each do |product_type| %>
-    <li> <%= link_to product_type, store_path(:product_filter => product_type), :class => 'filter_button' %></li>
-    <%end%>
-  </ul>
-
+<% if @sub_filters %>
+<div class="category_shaixuan">
+  <div class="category_shaixuan_c">
+    <div class="spfl_r_table_tit">按品牌/属性分类</div>
+    <ul class="choose_pro_tab">
+      <li class="choose_pro_fenlei" id="choose_fenlei"> <h2>分类：</h2>
+        <% @sub_filters.each do |product_sub_type| %>
+        <span> <%= link_to product_sub_type, store_path(:product_filter => @filter, :product_sub_filter => product_sub_type), :class => 'filter_button' %></span>
+        <%end %>
+      </li>
+    </ul>
+  </div>
 </div>
+<% end %>
+
+<div class="category_result">
+  <div class="paixu"><b>排序方式：</b>
+    <a id="SubCategory_btn_Common_Search_SortPrice" name="SubCategory$btn_Common_Search_SortPrice" href="javascript:__doPostBack('SubCategory$btn_Common_Search_SortPrice','')"><img border="0" src="/images/mainpage/SortByPriceDown.gif" alt="按价格升序排序"></a>
+    <a id="SubCategory_btn_Common_Search_SortTime" name="SubCategory$btn_Common_Search_SortTime" href="javascript:__doPostBack('SubCategory$btn_Common_Search_SortTime','')"><img border="0" src="/images/mainpage/SortByTimeUpStop.gif" alt="按时间排序"></a>
+    <a id="SubCategory_btn_Common_Search_SortPopularity" name="SubCategory$btn_Common_Search_SortPopularity" href="javascript:__doPostBack('SubCategory$btn_Common_Search_SortPopularity','')"><img border="0" src="/images/mainpage/ren1.gif" alt="按人气排序"></a>
+    <a id="SubCategory_btn_Common_Search_SortSaleCounts" name="SubCategory$btn_Common_Search_SortSaleCounts" href="javascript:__doPostBack('SubCategory$btn_Common_Search_SortSaleCounts','')"><img border="0" src="/images/mainpage/xiao1.gif" alt="按销量排序"></a></div>
+  <div class="result">总共有1件商品,20件商品为一页,共1页第 1页</div>
+</div>
+
 <div id="store_list">
     <% @products.each do |product| %>
         <div class="entry">

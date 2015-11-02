@@ -48,3 +48,22 @@
     float: right;
     padding-right: 5px;
 }
+
+/* 种类细分 */
+.category_r{ width:765px; float:right; overflow:hidden; padding-bottom:5px;_padding-bottom:0px; margin-top:15px;}
+.category_shaixuan{ border:1px solid #ebebeb; overflow:hidden; width:763px;}
+.spfl_r_table_tit {height:32px; overflow:hidden; background:url(../lstc_images/lstc_spfl/spfl_03.jpg) repeat-x; padding-left:12px; font-family: microsoft yahei; font-size:14px; font-weight:700; line-height:29px; color:#707070;}
+.choose_pro_tab{ color:#1f1f1f; overflow:hidden;margin-left:10px;}
+.choose_pro_tab li { float:left;}
+.choose_pro_fenlei { width:715px;border-bottom:1px solid #ebebeb; margin-left:12px;  padding-bottom:5px; _margin-left:6px; }
+.category_shaixuan_c h2 { padding-left:10px;}
+.choose_pro_tab li span{ color:#5D5D5D; margin:0 8px;}
+.choose_pro_fenlei span { float:left;}
+.choose_pro_tab a{ color:#5D5D5D; float:left; margin-right:13px; white-space:nowrap;display:block;margin-bottom:2px; height: 22px;line-height: 22px; padding:0px 4px; }
+.choose_pro_tab li h2{ float:left;  font-weight:700; margin-right:5px; margin-top:1px;_margin-top:0px;}
+
+/* 排序 */
+.category_result{ margin-top:12px; _margin-top:11px;width:763px; border:1px  solid #ffd6aa; background:url(/images/mainpage/spfl_pxfsbc.jpg) repeat-x; height:22px; overflow:hidden; padding:6px 0;}
+.category_result .paixu{ float:left; padding-left:8px; height:32px;  color:#EC7612;}
+.category_result .paixu img{ vertical-align:middle;}
+.category_result .result{ float:right; color:#C47A23;padding-right:20px;}

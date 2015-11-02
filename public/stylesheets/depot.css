@@ -164,9 +164,12 @@ a:hover{color:#bd0a01;text-decoration:underline;}
 }
 
 #main {
-    margin-left: 17em;
-    padding-top: 4ex;
-    padding-left: 2em;
+    width: 765px;
+    float: right;
+    overflow: hidden;
+    padding-bottom: 5px;
+    _padding-bottom: 0px;
+    margin-top: 15px;
     background: white;
 }
 
