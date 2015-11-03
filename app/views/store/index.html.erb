@@ -32,19 +32,15 @@
   <div class="result">共有<%= @products.count %>件货品, 20件一页</div>
 </div>
 
-<div id="store_list">
+<div class="category_pro_tab">
+  <ul class="category_pro_list">
     <% @products.each do |product| %>
-        <div class="entry">
-          <%= image_tag("uploads/#{product.image_url}")%>
-          <h3><%= product.title %></h3>
-          <%= "#{LocalizeHelper::ORIGIN_WORD}: #{product.origin}" %>
-          <%= "#{LocalizeHelper::INVENTORY_WORD}: #{product.inventory}" %>
-          <br/>
-          <%= sanitize(product.description) %>
-          <div class="price_line">
-            <span class="price"><%= "#{number_to_rmb(product.price)}/#{product.unit}" %></span>
-            <%= button_to '加入购物车', line_items_path(:product_id => product, :number_change => 1), :remote => true%>
-          </div>
-        </div>
+    <li>
+      <div class="category_pro_pic"><a href="" target="_blank"><%= image_tag("uploads/#{product.image_url}")%></a></div>
+      <div class="category_pro_name"><a href="" target="_blank"><%= product.title %></a><%= button_to '加入购物车', line_items_path(:product_id => product, :number_change => 1), :remote => true%>
+      </div>
+      <div class="category_pro_price"><span><%=number_to_rmb(product.price) %></span></div>
+    </li>
     <%end%>
+  </ul>
 </div>

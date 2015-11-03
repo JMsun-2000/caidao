@@ -2,6 +2,7 @@ class SessionsController < ApplicationController
   skip_before_filter :authorize
 
   def new
+    @cart = current_cart
   end
 
   def create

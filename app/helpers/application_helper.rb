@@ -7,7 +7,7 @@ module ApplicationHelper
   end
 
   def number_to_rmb(number)
-    return "#{number_with_precision(number, :precision => 2)}元"
+    return "￥#{number_with_precision(number, :precision => 2)}"
   end
 end
 
