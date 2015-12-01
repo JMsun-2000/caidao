@@ -21,9 +21,12 @@
         </span>
       </div>
 
+      <% if @cart %>
       <div class="lstc_header_top_cart"><a href="/ShoppingCart.aspx" target="_blank">
         购物车<span><%=@cart.total_items%></span> 件，合计<span><%=number_to_rmb(@cart.total_price) %></span>元   </a>
       </div>
+      <% end %>
+
       <div class="lstc_header_top_links">
         <span><%= link_to "#{LocalizeHelper::MY_INFO_WORD}", User.find_by_id(session[:user_id])%></span>|
         <span><%= link_to "#{LocalizeHelper::MY_WORD}#{LocalizeHelper::ORDER_WROD}", customer_order_index_path %></span>|
